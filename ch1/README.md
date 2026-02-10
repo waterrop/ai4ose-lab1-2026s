@@ -16,7 +16,7 @@
 
 
 ## 编译
-在ch1/下键入cargo build --target riscv64gc-unknown-none-elf
+在根目录下键入cargo build -p ch1 --target riscv64gc-unknown-none-elf
 
 ## 使用qemu运行（需提前在根目录安装好rustsbi-qemu.bin）
-在ch1/下键入qemu-system-riscv64 -machine virt -nographic -bios ../rustsbi-qemu.bin -kernel target/riscv64gc-unknown-none-elf/debug/ch1
+在ch1/下键入qemu-system-riscv64 -machine virt -nographic -bios rustsbi-qemu.bin -kernel target/riscv64gc-unknown-none-elf/debug/ch1

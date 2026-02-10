@@ -1,124 +1,27 @@
-# ai4ose-lab1-2026s
+# 第一章
 
-[![Crates.io](https://img.shields.io/crates/v/ai4ose-lab1-2026s.svg)](https://crates.io/crates/ai4ose-lab1-2026s)
-[![License: GPL-3.0](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](LICENSE)
+操作系统内核编程语言是Rust，操作系统内核基于的硬件环境是RISC-V 64，操作系统内核实验在QEMU模拟器上运行。要求基于Rust Crate组件化编程，即每个内核或内核模块是可以发布到crates.io上的条件（cargo publish --dry-run 成功运行）
 
-AI4OSE Lab1: 一个可发布到 crates.io 的最简单 Rust 应用程序，作为与AI合作进行操作系统内核学习的起点。
+第一章旨在引导你构建一个尽量简单的**特权态裸机应用程序**：
 
-执行本项目后，会输出 AI4OSE 实验一说明内容。
-
-##  **快速浏览**
-
-直接阅读[AI4OSE实验一内容](https://github.com/LearningOS/ai4ose-lab1-2026s/blob/main/src/content.txt)
-
-
-## **常规浏览**
-
-### 1. 安装 Rust 工具链
-
-本项目使用 Rust 语言编写，需要安装 Rust 工具链（包含 `rustc` 编译器和 `cargo` 构建工具）。
-
-**Linux / macOS / WSL：**
-
-```bash
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-```
-
-安装完成后，按照提示将 Rust 加入环境变量（或重新打开终端）：
-
-```bash
-source "$HOME/.cargo/env"
-```
-
-**Windows：**
-
-从 [https://rustup.rs](https://rustup.rs) 下载并运行 `rustup-init.exe`，按照提示完成安装。
-
-验证安装
-
-```bash
-rustc --version    # 应显示 rustc 1.xx.x
-cargo --version    # 应显示 cargo 1.xx.x
-```
-
-### 2. 直接下载安装执行：显示实验内容
-
-使用 `cargo install` 从 crates.io 下载、编译并安装到本地：
-
-```bash
-cargo install ai4ose-lab1-2026s
-```
-
-安装完成后，可执行文件会被放置在 `$HOME/.cargo/bin/` 目录下（该目录通常已在 PATH 中），之后可以在任意位置直接运行：
-
-```bash
-ai4ose-lab1-2026s
-```
-
-### 3. 源代码下载编译安装执行：显示实验内容
-
-**方式一：通过 Git 克隆仓库**
-
-```bash
-git clone https://github.com/learningos/ai4ose-lab1-2026s.git
-cd ai4ose-lab1-2026s
-```
-
-**方式二：通过 cargo clone 获取**
-
-使用 `cargo clone`（需先安装 `cargo-clone`）：
-
-```bash
-cargo install cargo-clone
-cargo clone ai4ose-lab1-2026s
-cd ai4ose-lab1-2026s
-```
-
-该命令会从 crates.io 下载指定 crate 的源代码，并解压到以 crate 名称命名的目录中，可直接进行编译和修改。
-
-**方式三：通过 cargo download 下载**
-
-使用 `cargo download`（需先安装 `cargo-download`）：
-
-```bash
-cargo install cargo-download
-cargo download ai4ose-lab1-2026s > ai4ose-lab1-2026s.tar.gz
-tar xzf ai4ose-lab1-2026s.tar.gz
-cd ai4ose-lab1-2026s-*/
-```
-
-也可以直接在浏览器中访问 [https://crates.io/crates/ai4ose-lab1-2026s](https://crates.io/crates/ai4ose-lab1-2026s) 页面，点击 "Download" 按钮下载源码包。
+- 什么是特权态裸机应用程序？它与构建操作系统是什么关系？
+特权态是**CPU硬件提供的一种权限机制**，拥有对所有硬件的完全控制权。引导加载程序（如RustSBI）或最底层固件就运行在此态。
+裸机是指程序的运行环境，即程序直接运行在硬件上。
+所以我们要构建的特权态裸机应用程序是一种直接运行在硬件上的应用程序。
+- 为什么从构建特权态裸机应用程序开始？
+- 如何构建一个特权态裸机应用程序？
+    计算机硬件只能识别二进制01，我们用一系列01串即指令，来控制计算机硬件。
+    内核的硬件环境是RISC-V 64，而大部分人的电脑不支持RISC-V 64架构，所以我们使用QEMU模拟RISC-V 64硬件环境。
+    使用build.rs定制链接脚本，将主函数、栈放进内存段的相应位置
 
 
-#### 编译
+## 编译
+在根目录下键入cargo build -p ch1 --target riscv64gc-unknown-none-elf
 
-```bash
-cargo build
-```
+## 使用qemu运行（需提前在根目录安装好rustsbi-qemu.bin）
+在ch1/下键入qemu-system-riscv64 -machine virt -nographic -bios rustsbi-qemu.bin -kernel target/riscv64gc-unknown-none-elf/debug/ch1
 
-编译成功后，可执行文件位于 `target/debug/ai4ose-lab1-2026s`。
-
-如需生成优化后的发布版本：
-
-```bash
-cargo build --release
-```
-
-发布版本的可执行文件位于 `target/release/ai4ose-lab1-2026s`。
-
-#### 运行
-
-在源码目录中运行
-
-```bash
-cargo run
-```
-
-程序将输出 AI4OSE 实验一的完整说明内容。
-
-也可以直接运行编译好的可执行文件：
-
-```bash
-./target/debug/ai4ose-lab1-2026s
-```
-
+# 第二章
+做批处理系统前，先解决链接脚本问题
+每次都要手动写链接脚本太麻烦了，这一章引导你建立模块，可以控制内核链接脚本的结构
+链接器（不是编译原理里的那个链接器）的作用是把内存段分配清楚，批处理系统通过链接器把多个应用链接进系统里，所以链接器需要抽象出应用程序的一些特征来把多个应用程序放到对应的内存段中

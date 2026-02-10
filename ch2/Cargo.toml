@@ -1,0 +1,13 @@
+[package]
+name = "ch2"
+version = "0.0.1"
+edition = "2024"
+authors = ["waterrop"]
+
+[[bin]]
+name = "ch2"
+path = "src/main.rs"
+
+[dependencies]
+sbi-rt = { version = "0.0.2", features = ["legacy"] }
+rcore-console = { path = "../console" }

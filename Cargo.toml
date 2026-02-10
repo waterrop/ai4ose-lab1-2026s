@@ -13,4 +13,5 @@ categories = ["command-line-utilities"]
 [workspace]
 members = [
     "ch1",
+    "ch2",
 ]

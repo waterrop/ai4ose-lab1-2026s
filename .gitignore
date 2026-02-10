@@ -2,7 +2,7 @@
 Cargo.lock
 **/.*/*
 !**/.cargo/*
-!/.github/*
+!/.git/*
 !/.vscode/settings.json
 
 /target

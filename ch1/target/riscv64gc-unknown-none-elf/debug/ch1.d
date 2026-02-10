@@ -1,0 +1,1 @@
+/home/hdu/study/rust/2026s-ai4ose-lab/ai4ose-lab1-2026s/ch1/target/riscv64gc-unknown-none-elf/debug/ch1: /home/hdu/study/rust/2026s-ai4ose-lab/ai4ose-lab1-2026s/ch1/build.rs /home/hdu/study/rust/2026s-ai4ose-lab/ai4ose-lab1-2026s/ch1/src/main.rs

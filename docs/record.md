@@ -15,3 +15,17 @@
 # 计划
 
 跟着https://github.com/rcore-os/rCore-Tutorial-in-single-workspace/tree/test实验把所有章节过一遍，为设计教学实验环境提供思路。
+
+# Day2
+
+# 事件1
+
+进行https://github.com/rcore-os/rCore-Tutorial-in-single-workspace/tree/test的ch3实验
+
+# 问题
+
+代码的调试问题比较繁琐，代码整体结构较多、文件较多不知从何下手
+
+# 计划
+
+今天听了陈老师讲的AI的辅助作用对我启发很深，之前都是用AI直接出答案用，没有思考过向AI学习，计划利用AI辅助学习解决https://github.com/rcore-os/rCore-Tutorial-in-single-workspace/tree/test的五个实验，并记录。

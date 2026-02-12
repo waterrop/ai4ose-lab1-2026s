@@ -29,3 +29,14 @@
 # 计划
 
 今天听了陈老师讲的AI的辅助作用对我启发很深，之前都是用AI直接出答案用，没有思考过向AI学习，计划利用AI辅助学习解决https://github.com/rcore-os/rCore-Tutorial-in-single-workspace/tree/test的五个实验，并记录。
+
+# Day3
+
+## 事件1
+申请理AI cosmos的账号，进行了编程环境的更新。
+## 事件2
+重新按照费曼学习法回顾了ch1、ch2的知识，形成了一份演讲稿在docs/Feynman_lecture/Day3.md。
+## 事件3
+根据陈老师给的prompt进行了学习计划的重新规划。
+## 计划
+继续按照学习计划学习。

@@ -4,7 +4,7 @@ Cargo.lock
 !**/.cargo/*
 !/.git/*
 !/.vscode/settings.json
-
+tg-rcore-tutorial/
 /target
 *.asm
 *.bin
